@@ -3,21 +3,26 @@ import React, { Component } from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import Menu from './components/MenuComponent'
 import Dishdetail from './components/DishdetailComponent';
-import './App.css';
 import { DISHES } from './shared/dishes';
 
 
 // function App() {
 
-class App extends Component {
+class Main extends Component {
 
   constructor(props){
     super(props);
 
     this.state = {
-      dishes: DISHES
+      dishes: DISHES,
+      selectedDish: null
     };
   }
+
+  onDishSelect=(dishId)=>{
+        this.setState({selectedDish:dishId});
+    }
+
 
   render() {
     return (
@@ -28,9 +33,12 @@ class App extends Component {
           </div>
         </Navbar>
 
-        <Menu dishes={this.state.dishes} />
-
-        <Dishdetail dishes={this.state.dish} />
+        <Menu dishes={this.state.dishes} 
+            onClick={(dishId)=>this.onDishSelect(dishId)} />
+        <Dishdetail 
+        // for each dish, this matches the dishid with the selected
+        // dish id 
+            dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)} />
       </div>
     );
   }
