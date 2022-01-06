@@ -19,8 +19,9 @@ class Dishdetail extends Component {
 
 
     renderDish=(dish)=>
-    {
-        if (dish!=null)
+    {   
+        //make dish != null;
+        if (dish == null)
         {
             return(
             <React.Fragment>
@@ -47,8 +48,8 @@ class Dishdetail extends Component {
 
     renderComments =(comments) =>
     {
-
-        if (comments!=null){
+        //make comments != null;
+        if (comments == null){
             const com = comments.map(co=>{
 
                     return(
@@ -62,11 +63,11 @@ class Dishdetail extends Component {
         );
             return(
                 <div>
-                <div>
-                <ul className="list-unstyled">
-                    {com}
-                </ul>
-                </div>
+                    <div>
+                        <ul className="list-unstyled">
+                            {com}
+                        </ul>
+                    </div>
                 </div>
             )
         }
